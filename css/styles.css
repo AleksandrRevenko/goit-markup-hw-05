@@ -201,6 +201,78 @@ body {
     border: var(--color-hover);
 }
 
+/* модалка */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(46, 47, 66, 0.4);
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 250ms var(--cubic), visibility 250ms var(--cubic);
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    min-width: 408px;
+    min-height: 576px;
+
+    padding: 24px;
+
+    background: #fcfcfc;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
+}
+
+.backdrop.is-hidden .modal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+    background: #e7e9fc;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    transition: backgroun-color 250ms var(--cubic), fill 250ms var(--cubic);
+}
+
+.close-btn:is(:hover, :focus) {
+    background-color: var(--color-hover);
+    fill: var(--background);
+}
+
+.close-icon {
+    width: 8px;
+    height: 8px;
+}
+
 /*section quality*/
 
 .list {
@@ -447,6 +519,39 @@ body {
 
 }
 
+/* технокпяяк */
+.portfolio-link {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.portfolio-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-hover);
+    padding: 40px 32px 0px;
+    transform: translateY(100%);
+    transition: transform 250ms var(--cubic);
+}
+
+.transition-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--team-background-color);
+}
+
+.item-images:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
 /*icon*/
 
 .div-icon {
@@ -634,109 +739,4 @@ body {
     border-radius: 50%;
     background-color: var(--background-footer-icon);
     ;
-}
-
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(46, 47, 66, 0.4);
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    transition: opacity 250ms var(--cubic), visibility 250ms var(--cubic);
-}
-
-.is-hidden {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.modal {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    min-width: 408px;
-    min-height: 576px;
-
-    padding: 24px;
-
-    background: #fcfcfc;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 250ms var(--cubic), opacity 250ms var(--cubic);
-}
-
-.backdrop.is-hidden .modal {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-}
-
-.close-btn {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 24px;
-    height: 24px;
-
-    border-radius: 50%;
-    background: #e7e9fc;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-
-    transition: backgroun-color 250ms var(--cubic), fill 250ms var(--cubic);
-}
-
-.close-btn:is(:hover, :focus) {
-    background-color: var(--color-hover);
-    fill: var(--background);
-}
-
-.close-icon {
-    width: 8px;
-    height: 8px;
-}
-
-
-/* технокпяяк */
-.portfolio-link {
-    text-decoration: none;
-    color: currentColor;
-}
-
-.portfolio-thumb {
-    position: relative;
-    overflow: hidden;
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-hover);
-    padding: 40px 32px 0px;
-    transform: translateY(100%);
-    transition: transform 250ms var(--cubic);
-}
-
-.transition-text {
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--team-background-color);
-}
-
-.item-images:hover .portfolio-overlay {
-    transform: translateY(0);
 }
